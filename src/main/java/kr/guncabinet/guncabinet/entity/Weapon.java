@@ -1,2 +1,4 @@
-package kr.guncabinet.guncabinet.entity;public class Weapon {
+package kr.guncabinet.guncabinet.entity;
+
+public class Weapon {
 }

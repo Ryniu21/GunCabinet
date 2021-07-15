@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
- tu będzie formularz dodawania broni
+ tu będzie formularz dodawania broni. dostepny tylko dla usera
 </body>
 </html>

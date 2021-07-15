@@ -2,14 +2,15 @@ package kr.guncabinet.guncabinet.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
+//@Table(name = Role.TABLE_NAME)
 public class Role {
+
+    //public static final String TABLE_NAME = "role";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -11,16 +11,19 @@ import org.springframework.security.config.annotation
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // właczenie zabezpieczńe w appce Springa
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/weapon/**", "/archive/**", "/ammunition/**").hasRole("USER")
-                .and().formLogin()
-                .loginPage("/action/login");
+                .antMatchers("/").permitAll() // metoda antMatchers określa adres. potem jest metoda dostępowa
+                .antMatchers("/weapon/**", "/archive/**", "/ammunition/**").hasRole("USER") // authenticted() określa, że adresy wymagają uwierzytelnienia
+//                .antMatchers("/weapon/**", "/ammunition/**").hasRole("USER") // określamy role dla której będzie dostepna
+//                .antMatchers("/archive/**").hasRole("ADMIN") // określamy role dla której będzie dostepna
+                .and().formLogin().loginPage("/login") // automatycznie przekierowanie do strony logowania, zamiast strony błędu
+                .and().logout().logoutSuccessUrl("/") // przekierowanie dla metody logout
+                .permitAll();
     }
 
     @Bean

@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
-    @ResponseBody
-    public String home() { return "home"; }
+    @GetMapping("/") // akcja testowa dostępna dla wszystkich
+    //@ResponseBody
+    public String home() { return "/home"; }
 
-    @GetMapping("/weapon/form")
-    @ResponseBody
-    public String about() { return "Here you can find some details for logged users"; }
+    @GetMapping("/home") // akcja dostępna tylko zalogowanych
+    public String addingWeapon() { return "/home"; }
+
+    @GetMapping("/archive/list")
+
+    public String archive() { return "/archive/list"; }
+
 
 }

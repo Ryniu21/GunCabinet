@@ -6,15 +6,26 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class LoginController {
-    @GetMapping(value = {"/action/login"})
+    @GetMapping(value = "/login")
     public String loginGet() {
-        return "/action/login";
+        return "login";
     }
 
-    @PostMapping("/action/login")
+    @PostMapping("/login")
     public String loginPost(){
-        return "/weapon/form";
+        return "/home";
     }
+
+    @GetMapping(value = "/logout")
+    public String logoutGet() {
+        return "logout";
+    }
+
+    @PostMapping("/logout")
+    public String logoutPost(){
+        return "/home";
+    }
+
 
 
 }

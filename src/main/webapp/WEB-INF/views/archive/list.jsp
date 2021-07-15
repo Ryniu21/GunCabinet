@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
+tu jest widok tylko dla admina
 </body>
 </html>

@@ -21,11 +21,23 @@ public class UserController {
     @ResponseBody
     public String createUser() {
         User user = new User();
+        user.setUsername("user");
+        user.setPassword("user123");
+        userService.saveUser(user);
+        return "user";
+    }
+
+
+    @GetMapping("/create-admin")
+    @ResponseBody
+    public String createAdmin() {
+        User user = new User();
         user.setUsername("admin");
         user.setPassword("admin123");
         userService.saveUser(user);
         return "admin";
     }
+
 
     @GetMapping("/admin")
     @ResponseBody
