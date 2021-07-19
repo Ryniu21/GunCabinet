@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: krzysiekryniu
@@ -8,9 +9,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Dodaj broń</title>
 </head>
 <body>
- tu będzie formularz dodawania broni. dostepny tylko dla usera
+    <form:form method="post" modelAttribute="weapon">
+        <form input path="id" type="hidden" name="id" value="${weapons.id}"/><br>
+        Nazwa klamki: <form:input path="name" name="name" value="${weapons.name}"/><br>
+        <input type="submit">
+
+    </form:form>
+
+
+
+
 </body>
 </html>

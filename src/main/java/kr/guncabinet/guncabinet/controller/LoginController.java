@@ -13,7 +13,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String loginPost(){
-        return "/home";
+        return "weapon/form";
     }
 
     @GetMapping(value = "/logout")
@@ -23,7 +23,7 @@ public class LoginController {
 
     @PostMapping("/logout")
     public String logoutPost(){
-        return "/home";
+        return "home";
     }
 
 

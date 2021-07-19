@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-    dzień dobry jsp <br>
+    dzień dobry jsp zapraszamy na stronę logowania: <br> <a href="/login"><spring:message code="home.login"/></a><br>
 <spring:message code="home.welcome"/>
 </body>
 </html>
