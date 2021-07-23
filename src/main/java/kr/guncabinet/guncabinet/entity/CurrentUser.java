@@ -1,8 +1,13 @@
 package kr.guncabinet.guncabinet.entity;
 
 import java.util.Collection;
+
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+
+import javax.persistence.Entity;
+
 public class CurrentUser extends User {
     private final kr.guncabinet.guncabinet.entity.User user;
     public CurrentUser(String username, String password,

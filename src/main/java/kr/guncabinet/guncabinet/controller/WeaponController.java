@@ -19,7 +19,7 @@ public class WeaponController {
     @GetMapping("/add/weapon")
     @ResponseBody
     public String createWeapon(Weapon weapon){
-       weaponService.saveWeapon(weapon);
+       weaponService.saveWeapon1(weapon);
 
        return "added weapon";
     }
@@ -27,7 +27,7 @@ public class WeaponController {
     @GetMapping("/add/weapon1")
     @ResponseBody
     public String createWeapon1(Weapon weapon){
-        weaponService.saveWeapon1(weapon);
+        weaponService.saveWeapon2(weapon);
 
         return "added weapon";
     }
