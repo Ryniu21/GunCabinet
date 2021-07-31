@@ -23,6 +23,6 @@ public class UserFormController {
     @PostMapping("/registry")
     public String add(User user, BindingResult result){
         userService.saveUser(user);
-        return "/login";
+        return "redirect:/login";
     }
 }

@@ -1,15 +1,20 @@
 package kr.guncabinet.guncabinet.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = Weapon.TABLE_NAME)
 public class Weapon {
     public static final String TABLE_NAME = "weapons";
@@ -21,13 +26,20 @@ public class Weapon {
     private String name;
     @ManyToOne
     @JoinColumn
-    private Ammo ammo;
+    private Caliber caliber;
     @ColumnDefault("0")
     private int ammoShoot;
     private String permission;
-    private LocalDateTime dateBought;
-    private LocalDateTime dateSold;
+    @Column(name="date_bought")
+    @Type(type="date")
+    private Date dateBought;
+    private Date dateSold;
     @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Ammo ammo;
+
+
 
 }

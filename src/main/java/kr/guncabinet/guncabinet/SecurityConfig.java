@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/weapon/**", "/ammunition/**").hasRole("USER") // określamy role dla której będzie dostepna
 //                .antMatchers("/archive/**").hasRole("ADMIN") // określamy role dla której będzie dostepna
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/weapon/form") // automatycznie przekierowanie do strony logowania, zamiast strony błędu
-                .and().logout().logoutSuccessUrl("/") // przekierowanie dla metody logout
+                .and().logout().logoutSuccessUrl("/login") // przekierowanie dla metody logout
                 .permitAll();
     }
 

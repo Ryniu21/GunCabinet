@@ -15,6 +15,9 @@ import java.util.List;
 public class AmmoService {
     private final AmmoRepository ammoRepository;
 
-    @ModelAttribute("ammunitions")
-    public List<Ammo> getAllCalibers(){return ammoRepository.findAll();}
+    @ModelAttribute("ammo")
+    public void saveNewAmmo(Ammo ammo){ammoRepository.save(ammo);}
+
+    @ModelAttribute("ammo")
+    public void saveExistingAmmo(Ammo ammo){ammoRepository.save(ammo);}
 }

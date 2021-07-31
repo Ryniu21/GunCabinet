@@ -16,20 +16,6 @@ import java.time.LocalDateTime;
 public class WeaponController {
     private final WeaponService weaponService;
 
-    @GetMapping("/add/weapon")
-    @ResponseBody
-    public String createWeapon(Weapon weapon){
-       weaponService.saveWeapon1(weapon);
 
-       return "added weapon";
-    }
-
-    @GetMapping("/add/weapon1")
-    @ResponseBody
-    public String createWeapon1(Weapon weapon){
-        weaponService.saveWeapon2(weapon);
-
-        return "added weapon";
-    }
 
 }

@@ -13,6 +13,5 @@ import java.util.List;
 public class AmmoController {
     public final AmmoService ammoService;
 
-    @ModelAttribute("ammunitions")
-    public List<Ammo> getAllCalibers(){return ammoService.getAllCalibers();}
+
 }

@@ -1,6 +1,7 @@
 package kr.guncabinet.guncabinet.controller;
 
 import kr.guncabinet.guncabinet.entity.CurrentUser;
+import kr.guncabinet.guncabinet.entity.Role;
 import kr.guncabinet.guncabinet.entity.User;
 import kr.guncabinet.guncabinet.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -44,4 +45,6 @@ public class UserController {
         User entityUser = customUser.getUser();
         return "Hello " + entityUser.getUsername();
     }
+
+
 }

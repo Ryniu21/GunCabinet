@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
     @GetMapping(value = "/login")
     public String loginGet() {
-        return "login";
+        return "/login";
     }
 
     @PostMapping("/login")
@@ -16,15 +16,15 @@ public class LoginController {
         return "weapon/form";
     }
 
-    @GetMapping(value = "/logout")
-    public String logoutGet() {
-        return "logout";
-    }
-
-    @PostMapping("/logout")
-    public String logoutPost(){
-        return "home";
-    }
+//    @GetMapping(value = "/logout")
+//    public String logoutGet() {
+//        return "logout";
+//    }
+//
+//    @PostMapping("/logout")
+//    public String logoutPost(){
+//        return "home";
+//    }
 
 
 

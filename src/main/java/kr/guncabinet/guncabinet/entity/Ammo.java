@@ -1,6 +1,7 @@
 package kr.guncabinet.guncabinet.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -9,20 +10,26 @@ import java.util.Set;
 @Data
 @Table(name = Ammo.TABLE_NAME)
 public class Ammo {
-    public static final String TABLE_NAME = "ammunitions";
+    public static final String TABLE_NAME = "ammo";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String caliber;
+    @ManyToOne
+    private Caliber caliber;
 
+    @ColumnDefault("0")
     private int ammoCount;
 
-    //@ManyToMany
+    @ManyToOne
+    private User user;
+
+
+    //@ManyToOne
     //@JoinTable(name= "user_ammo", joinColumns = @JoinColumn(name = "user_id"),
     //        inverseJoinColumns = @JoinColumn(name = "ammo_id"))
-    //private Set<User> users;
+    //private User user;
 
 
 }
