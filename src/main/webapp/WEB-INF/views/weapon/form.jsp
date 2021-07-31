@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: krzysiekryniu
@@ -38,7 +39,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <%@ include file="../sidebar.jsp" %>
+    <%@ include file="../include/sidebar.jsp" %>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -46,40 +47,41 @@
         <!-- Main Content -->
         <div id="content">
 
-            <%@ include file="../header.jsp" %>
+            <%@ include file="../include/header.jsp" %>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Witam w aplikacji.</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Formularz dodania broni</h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2>Zapraszamy na stronę logowania: </h2>
+                    <h2>Dodaj jednostkę broni: </h2>
                     <body>
                     <form:form method="post" modelAttribute="weapon">
                         <form input path="id" type="hidden" name="id" value="${weapons.id}"/><br>
                         Nazwa klamki: <form:input path="name" name="name" value="${weapons.name}"/><br>
                         Kaliber: <form:select path="caliber"><br>
                         <form:option value="0">Wybierz kaliber</form:option><br>
-                        <form:options items="${calibers}" itemLabel="name" itemValue="id"/><br>
+                        <form:options items="${calibers}" itemValue="id" itemLabel="name"/><br>
                     </form:select><br>
                         Rodzaj pozwolenia:<br><form:select path="permission"><br>
                         <form:option value="0">Wybierz pozwolenie</form:option><br>
-                        <form:options items="${permissions}"/>
+                        <form:options items="${permissions}" itemValue="permission" itemLabel="permission"/>
                     </form:select><br>
-                        Data zakupu: <form:input type="date" path="dateBought" name="dateBought" value="${weapons.date_bought}"/><br>
-                        <form input modelAttribute="ammo" path="id" type="hidden" name="id" value="${ammo.ammoCount}"/>
+                        Data zakupu: <form:input type="date" path="dateBought" name="dateBought"/><br>
+                        Wystrzelana amunicja: <form:input modelAttribute="weapon" path="ammoShoot" name="ammoShoot"/><br>
+                        <form input modelAttribute="ammo" path="id" name="id" type="hidden"/><br>
                         <input type="submit">
                     </form:form>
 
                     <sec:authorize access="isAuthenticated()"> <%--    wyświetlanie treści tylko dla użytkownika zalogowanego --%>
                         <form action="<c:url value="/logout"/>" method="post">
-                            <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+                            <input class="btn-primary fa fa-id-badge" type="submit" value="Wyloguj">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </form>
                     </sec:authorize>
@@ -91,7 +93,7 @@
         </div>
         <!-- End of Main Content -->
 
-        <%@include file="../footer.jsp"%>
+        <%@include file="../include/footer.jsp"%>
 
 
     </div>

@@ -1,6 +1,8 @@
 package kr.guncabinet.guncabinet.service;
 
 import kr.guncabinet.guncabinet.entity.Ammo;
+import kr.guncabinet.guncabinet.entity.Caliber;
+import kr.guncabinet.guncabinet.entity.User;
 import kr.guncabinet.guncabinet.repository.AmmoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,12 @@ public class AmmoService {
     private final AmmoRepository ammoRepository;
 
     @ModelAttribute("ammo")
-    public void saveNewAmmo(Ammo ammo){ammoRepository.save(ammo);}
+    public void saveNewAmmo(User user, Caliber caliber) {
+        Ammo ammo = ammoRepository.findAmmoByUserAndCaliber(user, caliber);
+        if (ammo == null) {
+            ammoRepository.save(new Ammo(caliber, user));
+        }
 
-    @ModelAttribute("ammo")
-    public void saveExistingAmmo(Ammo ammo){ammoRepository.save(ammo);}
+    }
+
 }

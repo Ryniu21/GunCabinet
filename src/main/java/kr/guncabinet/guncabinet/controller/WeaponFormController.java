@@ -51,31 +51,13 @@ public class WeaponFormController {
     public String weaponForm (Weapon weapon, Ammo ammo, BindingResult result) {
         weapon.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName())); //Zaciąganie danych dla usera aktualnego ze spring security
         ammo.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()));
-        ammoService.saveNewAmmo(ammo);
+        ammoService.saveNewAmmo(weapon.getUser(), weapon.getCaliber());
         weaponService.saveWeapon(weapon);
 
-
-
-        return "redirect:/weapon/form";
+        return "redirect:/weapon/all";
     }
 
 
-    @GetMapping("/list/{id}")
-    public String weaponList(@PathVariable int id, Model model){
-        model.addAttribute("weapons", weaponService.findWeaponByUserID(id));
-        return "/weapon/form";
-    }
 
-//    @GetMapping("/alltest")
-//    @ResponseBody
-//    public String getAllWeaponsTest() {
-//        return weaponService.getAllWeapons().toString();
-//    }
-
-    @GetMapping("/all")
-    public String getAllWeapons(Model model) {
-        model.addAttribute("weapons", weaponService.getAllWeapons());
-        return "/weapon/list";
-    }
 
 }

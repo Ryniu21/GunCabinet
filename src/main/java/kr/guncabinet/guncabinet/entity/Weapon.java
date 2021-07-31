@@ -27,7 +27,6 @@ public class Weapon {
     @ManyToOne
     @JoinColumn
     private Caliber caliber;
-    @ColumnDefault("0")
     private int ammoShoot;
     private String permission;
     @Column(name="date_bought")
@@ -37,7 +36,7 @@ public class Weapon {
     @ManyToOne
     private User user;
 
-    @ManyToOne
+    @Transient
     private Ammo ammo;
 
 

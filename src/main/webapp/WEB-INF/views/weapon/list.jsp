@@ -37,7 +37,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <%@ include file="../sidebar.jsp" %>
+    <%@ include file="../include/sidebar.jsp" %>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -45,14 +45,14 @@
         <!-- Main Content -->
         <div id="content">
 
-            <%@ include file="../header.jsp" %>
+            <%@ include file="../include/header.jsp" %>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Witam w aplikacji.</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Zawartość szafy.</h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
@@ -73,13 +73,19 @@
                         </tr>
                         <c:forEach items="${weapons}" var="weapon">
                             <tr>
-                                <th>${weapon.id}</th>
-                                <th>${weapon.name}</th>
-                                <th>${weapon.permission}</th>
-                                <th>${weapon.dateBought}</th>
-                                <th>${weapon.caliber.name}</th>
-                                <th>${weapon.ammoShoot}</th>
-                                <th>${weapon.ammo.ammoCount}</th>
+                                <td>${weapon.id}</td>
+                                <td>${weapon.name}</td>
+                                <td>${weapon.permission}</td>
+                                <td>${weapon.dateBought}</td>
+                                <td>${weapon.caliber.name}</td>
+                                <td>${weapon.ammoShoot}</td>
+                                <td>${weapon.ammo.ammoCount}</td>
+                                <td>
+<%--                                    <button type="button" class="btn btn-warning" href='<c:url value="/weapon/archive/form/${weapon.id}"/>' onclick="return confirm('Napewno chcesz zarchiwizować jednostkę broni?')">Zarchiwizuj</button>--%>
+                                    <button type="button" class="btn btn-warning" onclick="window.location.href='<c:url value="/weapon/archive/form/${weapon.id}"/>'">Zarchiwizuj</button>
+                                    <button type="button" class="btn btn-secondary" onclick="window.location.href='<c:url value="/weapon/edit/${weapon.id}"/>'">Edytuj</button>
+                                    <button type="button" class="btn btn-primary" onclick="window.location.href='<c:url value="/weapon/show/${weapon.id}"/>'">Pokaż</button>
+                                </td>
                                 <th></th>
 
 
@@ -96,7 +102,7 @@
         </div>
         <!-- End of Main Content -->
 
-        <%@include file="../footer.jsp"%>
+        <%@include file="../include/footer.jsp"%>
 
 
     </div>

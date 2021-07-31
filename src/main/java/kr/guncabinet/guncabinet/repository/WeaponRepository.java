@@ -14,6 +14,8 @@ import java.util.List;
 public interface WeaponRepository extends JpaRepository<Weapon,Long> {
     List<Weapon> findWeaponByUserId(int id);
 
+    Weapon findWeaponById(Long id);
+
     @Query("SELECT w FROM Weapon w where w.user = ?1")
     List<Weapon> getWeaponByUserId(int id);
 

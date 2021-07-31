@@ -3,6 +3,7 @@ package kr.guncabinet.guncabinet.service;
 import kr.guncabinet.guncabinet.entity.Ammo;
 import kr.guncabinet.guncabinet.entity.User;
 import kr.guncabinet.guncabinet.entity.Weapon;
+import kr.guncabinet.guncabinet.repository.AmmoRepository;
 import kr.guncabinet.guncabinet.repository.WeaponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,18 +20,38 @@ import java.util.List;
 @Transactional
 public class WeaponService {
     private final WeaponRepository weaponRepository;
+    private final AmmoRepository ammoRepository;
     @PersistenceContext
     EntityManager entityManager;
 
 
     public void saveWeapon(Weapon weapon){
-
         weaponRepository.save(weapon);
     }
 
+    public void update(Weapon weapon){
+        weaponRepository.save(weapon);
+    }
+
+    public Weapon findWeaponByWeaponID(Long id){return weaponRepository.findWeaponById(id);}
+
     public List<Weapon> findWeaponByUserID(int id){return weaponRepository.findWeaponByUserId(id);}
 
-    public List<Weapon> getAllWeapons(){return entityManager.createQuery("select w from Weapon w").getResultList();}
+    public List<Weapon> getAllWeapons(){return entityManager.createQuery("select w from Weapon w where w.dateSold is null").getResultList();}
 
+    public List<Weapon> getAllArchivedWeapons(){return entityManager.createQuery("select w from Weapon w where w.dateSold is not null").getResultList();}
 
+    public List<Weapon> getAllWeaponsWithAmmunition() {
+        List<Weapon> weapons = getAllWeapons();
+        weapons.stream()
+                .forEach(w -> w.setAmmo(ammoRepository.findAmmoByUserAndCaliber(w.getUser(), w.getCaliber())));
+        return weapons;
+    }
+
+    public List<Weapon> getAllArchivedWeaponsWithAmmunition() {
+        List<Weapon> weapons = getAllArchivedWeapons();
+        weapons.stream()
+                .forEach(w -> w.setAmmo(ammoRepository.findAmmoByUserAndCaliber(w.getUser(), w.getCaliber())));
+        return weapons;
+    }
 }

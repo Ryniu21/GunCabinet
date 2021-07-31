@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: krzysiekryniu
@@ -37,7 +38,9 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <%@ include file="sidebar.jsp" %>
+    <sec:authorize access="isAuthenticated()">
+        <%@ include file="include/sidebar.jsp" %>
+    </sec:authorize>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -45,7 +48,7 @@
         <!-- Main Content -->
         <div id="content">
 
-            <%@ include file="header.jsp" %>
+            <%@ include file="include/header.jsp" %>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
@@ -74,7 +77,7 @@
         </div>
         <!-- End of Main Content -->
 
-        <%@include file="footer.jsp"%>
+        <%@include file="include/footer.jsp"%>
 
 
     </div>
