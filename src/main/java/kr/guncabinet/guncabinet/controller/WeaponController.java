@@ -39,9 +39,10 @@ public class WeaponController {
     }
 
     @GetMapping("/show/{id}")
-    @ResponseBody
-    public String showOneWeapon(Model model){
-        return "showing one weapon";
+    public String showOneWeapon(@PathVariable Long id, Model model){
+        //Weapon weapon = weaponService.findWeaponByWeaponID(id);
+        model.addAttribute(weaponService.findWeaponByWeaponID(id));
+        return "/weapon/show";
     }
 
     @GetMapping("/archive/form/{id}")
@@ -50,21 +51,6 @@ public class WeaponController {
         return "archiving one weapon";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editWeapon(@PathVariable Long id, Model model){
-        model.addAttribute("weapon", weaponService.findWeaponByWeaponID(id));
-        return "/weapon/form";
-    }
 
-    @PostMapping("/edit/{id}")
-    public String update(@PathVariable Long id, @Valid Weapon weapon, BindingResult result) {
-        if (weapon.getId() == id) {
-            if (result.hasErrors()) {
-                return "/weapon/form";
-            }
-            weaponService.update(weapon);
-        }
-        return "redirect:/weapon/all";
-    }
 
 }

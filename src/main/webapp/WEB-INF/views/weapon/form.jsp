@@ -71,11 +71,12 @@
                     </form:select><br>
                         Rodzaj pozwolenia:<br><form:select path="permission"><br>
                         <form:option value="0">Wybierz pozwolenie</form:option><br>
-                        <form:options items="${permissions}" itemValue="permission" itemLabel="permission"/>
+                        <form:options items="${permissions}"/>
                     </form:select><br>
                         Data zakupu: <form:input type="date" path="dateBought" name="dateBought"/><br>
                         Wystrzelana amunicja: <form:input modelAttribute="weapon" path="ammoShoot" name="ammoShoot"/><br>
                         <form input modelAttribute="ammo" path="id" name="id" type="hidden"/><br>
+                        <form input path="weapon.user" name="weapon.user" type="hidden"/><br>
                         <input type="submit">
                     </form:form>
 

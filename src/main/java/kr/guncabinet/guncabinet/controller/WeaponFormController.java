@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +58,26 @@ public class WeaponFormController {
         return "redirect:/weapon/all";
     }
 
+
+    @GetMapping("/edit/{id}")
+    public String editWeapon(@PathVariable Long id, Model model){
+        model.addAttribute("weapon", weaponService.findWeaponByWeaponID(id));
+        return "/weapon/form";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String update(@PathVariable Long id, @Valid Weapon weapon, Ammo ammo, BindingResult result) {
+        if (weapon.getId() == id) {
+            if (result.hasErrors()) {
+                return "/weapon/form";
+            }
+            weapon.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName())); //Zaciąganie danych dla usera aktualnego ze spring security
+            ammo.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()));
+            ammoService.saveNewAmmo(weapon.getUser(), weapon.getCaliber());
+            weaponService.update(weapon);
+        }
+        return "redirect:/weapon/all";
+    }
 
 
 
