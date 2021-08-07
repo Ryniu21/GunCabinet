@@ -74,18 +74,13 @@
                         <form:options items="${permissions}"/>
                     </form:select><br>
                         Data zakupu: <form:input type="date" path="dateBought" name="dateBought"/><br>
+                        <form input type="hidden" path="dateSold" name="dateSold"/><br>
                         Wystrzelana amunicja: <form:input modelAttribute="weapon" path="ammoShoot" name="ammoShoot"/><br>
                         <form input modelAttribute="ammo" path="id" name="id" type="hidden"/><br>
                         <form input path="weapon.user" name="weapon.user" type="hidden"/><br>
                         <input type="submit">
                     </form:form>
 
-                    <sec:authorize access="isAuthenticated()"> <%--    wyświetlanie treści tylko dla użytkownika zalogowanego --%>
-                        <form action="<c:url value="/logout"/>" method="post">
-                            <input class="btn-primary fa fa-id-badge" type="submit" value="Wyloguj">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        </form>
-                    </sec:authorize>
                     </body>
 
                 </div>

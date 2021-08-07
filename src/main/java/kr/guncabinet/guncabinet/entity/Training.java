@@ -23,6 +23,7 @@ public class Training {
     @ManyToOne
     private User user;
 
+    private Integer ammoShootAtTraining;
 
 
 

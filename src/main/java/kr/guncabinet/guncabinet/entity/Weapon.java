@@ -22,7 +22,7 @@ public class Weapon {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column (nullable = false, unique = true, length = 50)
+    @Column (nullable = false, length = 50)
     private String name;
     @ManyToOne
     @JoinColumn
@@ -32,6 +32,7 @@ public class Weapon {
     @Column(name="date_bought")
     @Type(type="date")
     private Date dateBought;
+    @Type(type="date")
     private Date dateSold;
     @ManyToOne
     private User user;

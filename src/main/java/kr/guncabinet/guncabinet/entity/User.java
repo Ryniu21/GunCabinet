@@ -1,12 +1,9 @@
 package kr.guncabinet.guncabinet.entity;
 
-import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,12 +21,14 @@ public class User {
     @Column(length = 50)
     private String mail;
     private String password;
-    private int enabled;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     @ColumnDefault("1")
     private Set<Role> roles;
+    @Column(name = "verification_code", length = 64)
+    private String verificationCode;
+    private boolean enabled;
 //    @OneToMany(mappedBy = "user")
 //    private List<Weapon> weapons = new ArrayList<>();
 

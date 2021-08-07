@@ -16,7 +16,10 @@ public interface WeaponRepository extends JpaRepository<Weapon,Long> {
 
     Weapon findWeaponById(Long id);
 
-    @Query("SELECT w FROM Weapon w where w.user = ?1")
-    List<Weapon> getWeaponByUserId(int id);
+    @Query("SELECT w FROM Weapon w where w.user.username = ?1 and w.dateSold is null")
+    List<Weapon> getWeaponByUserName(String username);
+
+    @Query("SELECT w FROM Weapon w where w.user.username = ?1 and w.dateSold is not null")
+    List<Weapon> getWeaponByUserNameArchived(String username);
 
 }

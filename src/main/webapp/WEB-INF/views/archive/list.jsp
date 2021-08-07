@@ -62,7 +62,7 @@
                     <body>
                     <table class="table">
                         <tr>
-                            <th>ID</th>
+<%--                            <th>ID</th>--%>
                             <th>Nazwa</th>
                             <th>Pozwolenie</th>
                             <th>Data Zakupu</th>
@@ -73,7 +73,7 @@
                         </tr>
                         <c:forEach items="${weapons}" var="weapon">
                             <tr>
-                                <td>${weapon.id}</td>
+<%--                                <td>${weapon.id}</td>--%>
                                 <td>${weapon.name}</td>
                                 <td>${weapon.permission}</td>
                                 <td>${weapon.dateBought}</td>

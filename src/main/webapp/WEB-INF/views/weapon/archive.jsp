@@ -1,11 +1,16 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: krzysiekryniu
-  Date: 31.07.2021
-  Time: 21:17
+  Date: 02.08.2021
+  Time: 22:40
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
 
@@ -15,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Zarchiwizuj broń</title>
+    <title>Dodaj broń</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -49,26 +54,28 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dodaj datę sprzedaży jednostki broni</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Formularz sprzedaży broni</h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2>Dodaj jednostkę broni: </h2>
+                    <h2>Archiwizuj jednostkę broni: </h2>
                     <body>
-                    <form:form method="post" modelAttribute="weapon">
-                        <form input path="id" type="hidden" name="id" value="${weapons.id}"/><br>
-                        Data sprzedaży: <form:input type="date" path="dateSold" name="dateSold" value="${weapons.date_sold}"/><br>
-                        <input type="submit" value="Archiwizuj">
-                    </form:form>
+                        <form:form method="post" modelAttribute="weapon">
+                            <form:hidden path="id" value="${weapon.id}"/>
+                            Nazwa klamki:${weapon.name}<br><form:hidden path="name" value="${weapon.name}"/>
+                            Kaliber: ${weapon.caliber.name}<div class="d-none"><form:select path="caliber"><br>
+                            <form:option value="0">Wybierz kaliber</form:option><br>
+                            <form:options items="${calibers}" itemValue="id" itemLabel="name"/><br>
+                            </form:select></div><br>
+                            Rodzaj pozwolenia:${weapon.permission}<br><form:hidden path="permission" value="${weapon.permission}"/>
+                            Wystrzelana amunicja: ${weapon.ammoShoot}<br><form:hidden path="ammoShoot" value="${weapon.ammoShoot}"/>
+                            Data zakupu: ${weapon.dateBought}<br><form:hidden path="dateBought" value="${weapon.dateBought}"/>
+                            Data sprzedaży: <form:input type="date" path="dateSold"/><br>
+                            <input type="submit" value="Zarchiwizuj">
+                        </form:form>
 
-                    <sec:authorize access="isAuthenticated()"> <%--    wyświetlanie treści tylko dla użytkownika zalogowanego --%>
-                        <form action="<c:url value="/logout"/>" method="post">
-                            <input class="btn-primary fa fa-id-badge" type="submit" value="Wyloguj">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        </form>
-                    </sec:authorize>
                     </body>
 
                 </div>

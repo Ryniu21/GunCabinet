@@ -32,6 +32,7 @@ public class Ammo {
         this.user = user;
     }
 
+
     //@ManyToOne
     //@JoinTable(name= "user_ammo", joinColumns = @JoinColumn(name = "user_id"),
     //        inverseJoinColumns = @JoinColumn(name = "ammo_id"))

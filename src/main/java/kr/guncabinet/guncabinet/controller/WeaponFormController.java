@@ -36,9 +36,10 @@ public class WeaponFormController {
     public List<String> permissionOptions() {
         List<String>  permissions = new ArrayList<>();
         permissions.add("sportowe");
-        permissions.add("sportowe do celów koleksjonerskich");
+        permissions.add("sportowe do celów kolekcjonerskich");
         permissions.add("kolekcjonerski");
         permissions.add("do ochrony osobistej");
+        permissions.add("myśliwskie");
         return permissions;
     }
 
@@ -62,6 +63,7 @@ public class WeaponFormController {
     @GetMapping("/edit/{id}")
     public String editWeapon(@PathVariable Long id, Model model){
         model.addAttribute("weapon", weaponService.findWeaponByWeaponID(id));
+        System.out.println("GETU");
         return "/weapon/form";
     }
 
@@ -75,9 +77,11 @@ public class WeaponFormController {
             ammo.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()));
             ammoService.saveNewAmmo(weapon.getUser(), weapon.getCaliber());
             weaponService.update(weapon);
+            System.out.println("POSTU");
         }
         return "redirect:/weapon/all";
     }
+
 
 
 

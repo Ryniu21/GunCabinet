@@ -62,7 +62,7 @@
                     <body>
                     <table class="table">
                         <tr>
-                            <th>ID</th>
+<%--                            <th>ID</th>--%>
                             <th>Nazwa</th>
                             <th>Pozwolenie</th>
                             <th>Data Zakupu</th>
@@ -73,7 +73,7 @@
                         </tr>
                         <c:forEach items="${weapons}" var="weapon">
                             <tr>
-                                <td>${weapon.id}</td>
+<%--                                <td>${weapon.id}</td>--%>
                                 <td>${weapon.name}</td>
                                 <td>${weapon.permission}</td>
                                 <td>${weapon.dateBought}</td>
@@ -82,7 +82,7 @@
                                 <td>${weapon.ammo.ammoCount}</td>
                                 <td>
 <%--                                    <button type="button" class="btn btn-warning" href='<c:url value="/weapon/archive/form/${weapon.id}"/>' onclick="return confirm('Napewno chcesz zarchiwizować jednostkę broni?')">Zarchiwizuj</button>--%>
-                                    <button type="button" class="btn btn-warning" onclick="window.location.href='<c:url value="/weapon/archive/form/${weapon.id}"/>'">Zarchiwizuj</button>
+                                    <button type="button" class="btn btn-warning" onclick="window.location.href='<c:url value="/weapon/archive/${weapon.id}"/>'">Zarchiwizuj</button>
                                     <button type="button" class="btn btn-secondary" onclick="window.location.href='<c:url value="/weapon/edit/${weapon.id}"/>'">Edytuj</button>
                                     <button type="button" class="btn btn-primary" onclick="window.location.href='<c:url value="/weapon/show/${weapon.id}"/>'">Pokaż</button>
                                 </td>

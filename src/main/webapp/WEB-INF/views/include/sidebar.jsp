@@ -55,7 +55,7 @@
     </li>
     <hr class="sidebar-divider">
     <li class="nav-item">
-        <a class="nav-link" href="/#">
+        <a class="nav-link" href="/ammunition/form">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Zakupy</span></a>
     </li>
@@ -66,6 +66,18 @@
             <span>Archiwum</span></a>
     </li>
     <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="/ammunition/list">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Zapasa amunicji</span></a>
+    </li>
+    <hr class="sidebar-divider">
+    <sec:authorize access="isAuthenticated()"> <%--    wyświetlanie treści tylko dla użytkownika zalogowanego --%>
+        <form action="<c:url value="/logout"/>" method="post">
+            <input class="btn-primary fa fa-id-badge" type="submit" value="Wyloguj">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+    </sec:authorize>
 </div>
 </ul>
 <!-- End of Sidebar -->
