@@ -1,12 +1,10 @@
 package kr.guncabinet.guncabinet.controller;
 
 import kr.guncabinet.guncabinet.entity.Ammo;
-import kr.guncabinet.guncabinet.entity.User;
 import kr.guncabinet.guncabinet.service.AmmoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,20 +23,23 @@ public class AmmoController {
 
     @GetMapping("/form")
     public String getAllAmmunitionShop(Model model){
-        //return ammoService.getAllAmmunitionForUser().toString();
         model.addAttribute("ammos", ammoService.getAllAmmunitionForUser());
         return "/ammunition/form";
     }
 
 
     @PostMapping("/form")
-
-    public String buyAmmunition(List<Ammo> ammunitions, BindingResult result){
-        for (Ammo ammo:ammunitions) {
-            ammo.setAmmoCount(10);
+    @ResponseBody
+    public String buyAmmunition(){
+        Integer ammoToAdd;
+        List<Ammo> ammunitions = ammoService.getAllAmmunitionForUser();
+        for (Ammo ammo: ammunitions
+             ) {
+            ammoToAdd = 1111;
+            ammo.setAmmoCount(ammo.getAmmoCount()+ammoToAdd);
         }
 
-        return "redirect:/weapon/all";
+        return ammunitions.toString();
     }
 
 

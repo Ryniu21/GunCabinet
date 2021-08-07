@@ -16,7 +16,7 @@ public class UserController {
     }
 
 
-        @GetMapping("/admin")
+    @GetMapping("/admin")
     @ResponseBody
     public String admin(@AuthenticationPrincipal CurrentUser customUser) {
         User entityUser = customUser.getUser();

@@ -77,7 +77,7 @@
                                     <td>${ammo.caliber.name}</td>
                                     <td>${ammo.ammoCount}</td>
                                     <td>
-                                        Dodaj amunicję: <input type="number" class="form-control" name="${ammo.id}" min="0" id="${ammo.id}"/><br>
+                                        Dodaj amunicję: <input type="number" class="form-control" name="${ammo.id}" min="0" value="0" id="${ammo.id}"/><br>
                                     </td>
                                     <th></th>
 

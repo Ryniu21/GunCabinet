@@ -3,7 +3,6 @@ package kr.guncabinet.guncabinet.repository;
 import kr.guncabinet.guncabinet.entity.Ammo;
 import kr.guncabinet.guncabinet.entity.Caliber;
 import kr.guncabinet.guncabinet.entity.User;
-import kr.guncabinet.guncabinet.entity.Weapon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -21,6 +20,6 @@ public interface AmmoRepository extends JpaRepository<Ammo, Long> {
     @Query("SELECT a FROM Ammo a where a.user.username = ?1")
     List<Ammo> findAmmoByUserUsername(String username);
 
-    @Query("SELECT a.id, a.ammoCount FROM Ammo a where a.user.username = ?1")
+    @Query("SELECT a.id, a.ammoCount, a.user FROM Ammo a where a.user.username = ?1")
     List<Ammo> findAmmoByUserUsernameToEdit(String username);
 }

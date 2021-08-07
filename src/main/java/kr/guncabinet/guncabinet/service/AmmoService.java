@@ -3,12 +3,10 @@ package kr.guncabinet.guncabinet.service;
 import kr.guncabinet.guncabinet.entity.Ammo;
 import kr.guncabinet.guncabinet.entity.Caliber;
 import kr.guncabinet.guncabinet.entity.User;
-import kr.guncabinet.guncabinet.entity.Weapon;
 import kr.guncabinet.guncabinet.repository.AmmoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.transaction.Transactional;
