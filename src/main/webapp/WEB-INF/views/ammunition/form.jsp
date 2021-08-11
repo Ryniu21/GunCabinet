@@ -60,35 +60,19 @@
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2>Dodaj amunicję: </h2>
+                    <h2>Dodaj amunicję:  </h2>
                     <body>
-
-                    <table class="table">
-                        <tr>
-                            <%--                            <th>ID</th>--%>
-                            <th>Kaliber</th>
-                            <th>Pozostało Amunicji</th>
-                            <th></th>
-                        </tr>
-                        <form:form method="post" modelAttribute="ammos">
-                            <c:forEach items="${ammos}" var="ammo">
-                                <tr>
-                                        <%--                                <td>${ammo.id}</td>--%>
-                                    <td>${ammo.caliber.name}</td>
-                                    <td>${ammo.ammoCount}</td>
-                                    <td>
-                                        Dodaj amunicję: <input type="number" class="form-control" name="${ammo.id}" min="0" value="0" id="${ammo.id}"/><br>
-                                    </td>
-                                    <th></th>
-
-                                </tr>
-
-                            </c:forEach>
-                            <input type="submit" value="Dodaj amunicję">
-                        </form:form>
-
-
-                    </table>
+                    <form:form method="post" modelAttribute="ammo">
+                        ${ammo.caliber.name}<br>
+                        Amunicji w Magazynie: ${ammo.ammoCount}<br>
+                        <form:input path="ammoBought" type="number" id="ammoBought" name="ammoBought"
+                                    min="0" value="0"/>
+                        <button type="button" class="btn btn-secondary" id="addOne">+1</button>
+                        <button type="button" class="btn btn-secondary" id="addTen">+10</button>
+                        <button type="button" class="btn btn-secondary" id="addHundred">+100</button>
+                        <button type="button" class="btn btn-secondary" id="addThousand">+1000</button><br>
+                        <input type="submit">
+                    </form:form>
                     </body>
 
                 </div>

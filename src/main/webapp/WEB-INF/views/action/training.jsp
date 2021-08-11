@@ -62,10 +62,31 @@
                 <div>
                     <h2>Dodaj trening: </h2>
                     <body>
-                    <form:form>
+                    <form:form method="post" modelAttribute="weapons">
+                    <table>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Liczba wystrzelanych naboi</th>
+                            <th></th>
+                        </tr>
 
-
-
+                        <c:forEach items="${weapons}" var="weapon">
+                            <tr>
+                                <td>${weapon.name}</td>
+                                <td>
+                                    <input type="number" class="form-control" name="${weapon.id}" min="0" value="0" id="${weapon.id}" width="50"/>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary">+1</button>
+                                    <button type="button" class="btn btn-secondary">+10</button>
+                                    <button type="button" class="btn btn-secondary">+100</button>
+                                    <button type="button" class="btn btn-secondary">+1000</button>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                        <br>
+                        <input type="submit" value="Sprzedaj amunicję">
                     </form:form>
 
                     </body>

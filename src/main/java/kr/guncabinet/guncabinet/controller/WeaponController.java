@@ -1,6 +1,5 @@
 package kr.guncabinet.guncabinet.controller;
 
-import kr.guncabinet.guncabinet.entity.Ammo;
 import kr.guncabinet.guncabinet.entity.Caliber;
 import kr.guncabinet.guncabinet.entity.Weapon;
 import kr.guncabinet.guncabinet.service.AmmoService;
@@ -11,11 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -60,11 +56,14 @@ public class WeaponController {
     @PostMapping("/archive/{id}")
     public String archiveWeapon(Weapon weapon) {
         weapon.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName())); //Zaciąganie danych dla usera aktualnego ze spring security
+
         weaponService.saveWeapon(weapon);
         System.out.println("POST1A");
 
         return "redirect:/weapon/archive/list";
     }
+
+
 
 //    @PostMapping("/archive/{id}")
 //    @ResponseBody

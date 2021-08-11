@@ -24,57 +24,58 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Menu</span></a>
-    </li>
 
     <!-- Divider -->
 <div sec:authorize="isAuthenticated()"> <%--    wyświetlanie treści tylko dla użytkownika zalogowanego --%>
     <hr class="sidebar-divider">
-    <button onclick="window.location.href='/weapon/all'" class="rounded-circle border-0" id="sidebarToggle" ></button><br>
+    <li class="nav-item">
+        <a class="nav-link" href="/about">
+            <span>About</span></a>
+    </li>
+
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link" href="/weapon/all">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Lista Broni</span></a>
+            <span><spring:message code="sidebar.weaponlist"/></span></a>
     </li>
+
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link" href="/weapon/form">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Dodaj Broń</span></a>
+            <span><spring:message code="sidebar.addweapon"/></span></a>
     </li>
+<%--    <hr class="sidebar-divider">--%>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link" href="/action/training">--%>
+<%--            <span><spring:message code="sidebar.training"/></span></a>--%>
+<%--    </li>--%>
+
     <hr class="sidebar-divider">
     <li class="nav-item">
-        <a class="nav-link" href="/#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Trening</span></a>
+        <a class="nav-link" href="/action/traininglist">
+            <span>Treningi</span></a>
     </li>
-    <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link" href="/ammunition/form">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Zakupy</span></a>
-    </li>
+
+<%--    <hr class="sidebar-divider">--%>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link" href="/ammunition/form">--%>
+<%--            <span><spring:message code="sidebar.shopping"/></span></a>--%>
+<%--    </li>--%>
+
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link" href="/weapon/archive/list">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Archiwum</span></a>
+            <span><spring:message code="sidebar.archive"/></span></a>
     </li>
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link" href="/ammunition/list">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Zapasa amunicji</span></a>
+            <span><spring:message code="sidebar.ammolist"/></span></a>
     </li>
     <hr class="sidebar-divider">
     <sec:authorize access="isAuthenticated()"> <%--    wyświetlanie treści tylko dla użytkownika zalogowanego --%>
         <form action="<c:url value="/logout"/>" method="post">
-            <input class="btn-primary fa fa-id-badge" type="submit" value="Wyloguj">
+            <input class="btn btn-primary" type="submit" value="<spring:message code="sidebar.logout"/>">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
     </sec:authorize>

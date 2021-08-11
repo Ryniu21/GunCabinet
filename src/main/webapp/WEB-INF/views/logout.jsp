@@ -17,7 +17,7 @@
 <body>
 <sec:authorize access="isAuthenticated()"> <%--    wyświetlanie treści tylko dla użytkownika zalogowanego --%>
     <form action="<c:url value="/logout"/>" method="post">
-    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+    <input class="fa fa-id-badge" type="submit" value="<spring:message code="sidebar.logout"/>">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </sec:authorize>

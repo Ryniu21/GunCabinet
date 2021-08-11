@@ -20,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Strona Startowa</title>
+    <title><spring:message code="home.startpagetitle"/></title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -54,7 +54,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Witam w aplikacji.</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="home.welcometoapp"/></h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
@@ -64,7 +64,7 @@
                     <spring:message code="login.username"/>: <form:input path="username" name="username" value="${user.username}"/><br>
                     <spring:message code="login.emailadress"/>: <form:input path="mail" name="mail"  value="${user.mail}"/><br>
                     <spring:message code="login.password"/>: <form:input type="password" path="password" name="password"/><br>
-                    <input type="submit" value=<spring:message code="login.registryaction"/>>
+                    <input type="submit" value=<spring:message code="login.registryaction"/>><button type="button" onclick="window.location.href='<c:url value="/login"/>'"><spring:message code="registry.backtologinbutton"/></button>
                 </form:form>
             </div>
             <!-- /.container-fluid -->

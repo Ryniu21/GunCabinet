@@ -20,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dodaj broń</title>
+    <title><spring:message code="form.title"/></title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -54,28 +54,32 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Formularz dodania broni</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="form.header1"/></h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2>Dodaj jednostkę broni: </h2>
+                    <h2><spring:message code="form.header2"/>: </h2>
                     <body>
                     <form:form method="post" modelAttribute="weapon">
                         <form input path="id" type="hidden" name="id" value="${weapons.id}"/><br>
-                        Nazwa klamki: <form:input path="name" name="name" value="${weapons.name}"/><br>
-                        Kaliber: <form:select path="caliber"><br>
-                        <form:option value="0">Wybierz kaliber</form:option><br>
+                        <spring:message code="form.weaponname"/>: <form:input path="name" name="name" value="${weapons.name}"/><br>
+                        <form:errors path="name"/><br>
+                        <spring:message code="form.caliber"/>: <form:select path="caliber"><br>
+                        <form:errors path="caliber"/><br>
+                        <form:option value="0"><spring:message code="form.choosecaliber"/></form:option><br>
                         <form:options items="${calibers}" itemValue="id" itemLabel="name"/><br>
                     </form:select><br>
-                        Rodzaj pozwolenia:<br><form:select path="permission"><br>
-                        <form:option value="0">Wybierz pozwolenie</form:option><br>
+                        <spring:message code="form.permissiontype"/>:<br><form:select path="permission"><br>
+                        <form:option value="0"><spring:message code="form.choosepermission"/></form:option><br>
                         <form:options items="${permissions}"/>
                     </form:select><br>
-                        Data zakupu: <form:input type="date" path="dateBought" name="dateBought"/><br>
+                        <spring:message code="form.dateBought"/>: <form:input type="date" path="dateBought" name="dateBought"/><br>
+                        <form:errors path="dateBought"/><br>
                         <form input type="hidden" path="dateSold" name="dateSold"/><br>
-                        Wystrzelana amunicja: <form:input modelAttribute="weapon" path="ammoShoot" name="ammoShoot"/><br>
+                        <spring:message code="form.ammoshoot"/>: <form:input modelAttribute="weapon" path="ammoShoot" name="ammoShoot"/><br>
+                        <form:errors path="ammoShoot"/><br>
                         <form input modelAttribute="ammo" path="id" name="id" type="hidden"/><br>
                         <form input path="weapon.user" name="weapon.user" type="hidden"/><br>
                         <input type="submit">

@@ -1,12 +1,14 @@
 package kr.guncabinet.guncabinet.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = Training.TABLE_NAME)
 public class Training {
     public static final String TABLE_NAME = "trainings";
@@ -15,7 +17,7 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime trainingDate;
+    private Date trainingDate;
 
     @ManyToOne
     private Weapon weapon;
@@ -23,7 +25,7 @@ public class Training {
     @ManyToOne
     private User user;
 
-    private Integer ammoShootAtTraining;
+    private int ammoShootAtTraining;
 
 
 

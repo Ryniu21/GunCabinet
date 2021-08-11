@@ -1,6 +1,5 @@
 package kr.guncabinet.guncabinet.repository;
 
-import kr.guncabinet.guncabinet.entity.User;
 import kr.guncabinet.guncabinet.entity.Weapon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -21,5 +20,7 @@ public interface WeaponRepository extends JpaRepository<Weapon,Long> {
 
     @Query("SELECT w FROM Weapon w where w.user.username = ?1 and w.dateSold is not null")
     List<Weapon> getWeaponByUserNameArchived(String username);
+
+
 
 }

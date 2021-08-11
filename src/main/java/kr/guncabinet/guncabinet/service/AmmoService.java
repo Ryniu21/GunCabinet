@@ -37,6 +37,18 @@ public class AmmoService {
         return ammunitions;
     }
 
+    public Ammo getAmmoForId(Long id){
+        Ammo ammoToEdit = ammoRepository.findAmmoById(id);
+        return ammoToEdit;
+    }
+
+    public void updateByAddingAmmo(Integer ammoBought, Long id){
+        ammoRepository.updateByAddingAmmo(ammoBought,id);
+    }
+    public void update(Ammo ammo){
+        ammoRepository.save(ammo);
+    }
+
 
 
 }

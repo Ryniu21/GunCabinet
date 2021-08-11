@@ -17,8 +17,17 @@ public interface AmmoRepository extends JpaRepository<Ammo, Long> {
 
     Ammo findAmmoByUserAndCaliber (User user, Caliber caliber);
 
+    @Query("UPDATE Ammo a SET a.ammoCount=a.ammoCount+?1 WHERE a.id = ?1")
+    Ammo updateByAddingAmmo (Integer ammoBought, Long id);
+
+    @Query("UPDATE Ammo a SET a.ammoCount=a.ammoCount-?1 WHERE a.id = ?1")
+    Ammo updateBySubstractAmmo (Integer ammoBought, Long id);
+
     @Query("SELECT a FROM Ammo a where a.user.username = ?1")
     List<Ammo> findAmmoByUserUsername(String username);
+
+    @Query("SELECT a FROM Ammo a where a.id = ?1")
+    Ammo findAmmoById(Long id);
 
     @Query("SELECT a.id, a.ammoCount, a.user FROM Ammo a where a.user.username = ?1")
     List<Ammo> findAmmoByUserUsernameToEdit(String username);

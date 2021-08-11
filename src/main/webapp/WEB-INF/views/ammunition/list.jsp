@@ -71,14 +71,9 @@
 <%--                                <td>${ammo.id}</td>--%>
                                 <td>${ammo.caliber.name}</td>
                                 <td>${ammo.ammoCount}</td>
-                                <td>
+                                <td><button type="button" class="btn btn-secondary" onclick="window.location.href='<c:url value="/ammunition/form/${ammo.id}"/>'">Dokup amunicji</button></td>
 
-                                    <button type="button" class="btn btn-primary" onclick="">+10</button>
-                                    <button type="button" class="btn btn-primary" onclick="">+50</button>
-                                    <button type="button" class="btn btn-primary" onclick="">+100</button>
-                                </td>
                                 <th></th>
-
                             </tr>
 
                         </c:forEach>

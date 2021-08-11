@@ -62,11 +62,26 @@
                 <div>
                     <h2>Lista treningów</h2>
                     <body>
-                    <form:form>
+                    <table class="table">
+                        <tr>
+                            <%--                            <th>ID</th>--%>
+                            <th>Broń</th>
+                            <th>Wystrzelona Amunicja</th>
+                            <th>Data Treningu</th>
+                            <th></th>
+                        </tr>
+                        <c:forEach items="${trainings}" var="training">
+                            <tr>
+                                    <%--                                <td>${training.id}</td>--%>
+                                <td>${training.weapon.name}</td>
+                                <td>${training.ammoShootAtTraining}</td>
+                                <td>${training.trainingDate}</td>
+                                <th></th>
+                            </tr>
 
+                        </c:forEach>
 
-
-                    </form:form>
+                    </table>
 
                     </body>
 

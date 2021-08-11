@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lista broni</title>
+    <title>Lista Broni</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -52,23 +52,23 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Zawartość szafy.</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="weaponlist.header1"/>.</h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2>Lista broni: </h2>
+                    <h2><spring:message code="weaponlist.header2"/>: </h2>
                     <body>
                     <table class="table">
                         <tr>
 <%--                            <th>ID</th>--%>
-                            <th>Nazwa</th>
-                            <th>Pozwolenie</th>
-                            <th>Data Zakupu</th>
-                            <th>Kaliber</th>
-                            <th>Wystrzelona Amunicja</th>
-                            <th>Pozostało Amunicji</th>
+                            <th><spring:message code="weaponlist.name"/></th>
+                            <th><spring:message code="weaponlist.permission"/></th>
+                            <th><spring:message code="waponlist.dateBought"/></th>
+                            <th><spring:message code="weaponlist.caliber"/></th>
+                            <th><spring:message code="weaponlist.ammoShoot"/></th>
+                            <th><spring:message code="weaponlist.ammoLeft"/></th>
                             <th></th>
                         </tr>
                         <c:forEach items="${weapons}" var="weapon">
@@ -82,9 +82,10 @@
                                 <td>${weapon.ammo.ammoCount}</td>
                                 <td>
 <%--                                    <button type="button" class="btn btn-warning" href='<c:url value="/weapon/archive/form/${weapon.id}"/>' onclick="return confirm('Napewno chcesz zarchiwizować jednostkę broni?')">Zarchiwizuj</button>--%>
-                                    <button type="button" class="btn btn-warning" onclick="window.location.href='<c:url value="/weapon/archive/${weapon.id}"/>'">Zarchiwizuj</button>
-                                    <button type="button" class="btn btn-secondary" onclick="window.location.href='<c:url value="/weapon/edit/${weapon.id}"/>'">Edytuj</button>
-                                    <button type="button" class="btn btn-primary" onclick="window.location.href='<c:url value="/weapon/show/${weapon.id}"/>'">Pokaż</button>
+                                    <button type="button" class="btn btn-warning" onclick="window.location.href='<c:url value="/weapon/archive/${weapon.id}"/>'"><spring:message code="weaponlist.archivebutton"/></button>
+                                    <button type="button" class="btn btn-secondary" onclick="window.location.href='<c:url value="/weapon/edit/${weapon.id}"/>'"><spring:message code="weaponlist.editbutton"/></button>
+                                    <button type="button" class="btn btn-primary" onclick="window.location.href='<c:url value="/weapon/show/${weapon.id}"/>'"><spring:message code="weaponlist.showbutton"/></button>
+                                    <button type="button" class="btn btn-primary" onclick="window.location.href='<c:url value="/ammunition/training/${weapon.ammo.id}/${weapon.id}"/>'">Użyj na treningu</button>
                                 </td>
                                 <th></th>
 
