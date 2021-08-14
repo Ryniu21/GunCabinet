@@ -14,7 +14,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/weapon/all">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -73,6 +73,13 @@
             <span><spring:message code="sidebar.ammolist"/></span></a>
     </li>
     <hr class="sidebar-divider">
+    <sec:authorize access="hasRole('ADMIN')">
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/adminlist">
+            <span>Lista użytkowników</span></a>
+    </li>
+    <hr class="sidebar-divider">
+    </sec:authorize>
     <sec:authorize access="isAuthenticated()"> <%--    wyświetlanie treści tylko dla użytkownika zalogowanego --%>
         <form action="<c:url value="/logout"/>" method="post">
             <input class="btn btn-primary" type="submit" value="<spring:message code="sidebar.logout"/>">

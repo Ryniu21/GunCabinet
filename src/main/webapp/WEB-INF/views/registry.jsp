@@ -61,9 +61,12 @@
                 <%--                HERE INCLUDE CONTENT--%>
                 <form:form method="post" modelAttribute="user">
                     <form input path="id" type="hidden" name="id" value="${user.id}"/><br>
-                    <spring:message code="login.username"/>: <form:input path="username" name="username" value="${user.username}"/><br>
-                    <spring:message code="login.emailadress"/>: <form:input path="mail" name="mail"  value="${user.mail}"/><br>
-                    <spring:message code="login.password"/>: <form:input type="password" path="password" name="password"/><br>
+                    <spring:message code="login.username"/>: <form:input path="username" name="username" value="${user.username}"/>
+                    <font color="red"> <form:errors path="username">Nazwa użytkownika powinna mieć od 3 do 60 znaków</form:errors></font><br>
+                    <spring:message code="login.emailadress"/>: <form:input path="mail" name="mail"  value="${user.mail}"/>
+                    <font color="red"> <form:errors path="mail">Wpisza prawidłowy adres email</form:errors></font><br>
+                    <spring:message code="login.password"/>: <form:input type="password" path="password" name="password"/>
+                    <font color="red"> <form:errors path="password">Hasło powinna mieć powyżej 8 znaków, znak specjalny, liczbę i wielką literę</form:errors></font><br>
                     <input type="submit" value=<spring:message code="login.registryaction"/>><button type="button" onclick="window.location.href='<c:url value="/login"/>'"><spring:message code="registry.backtologinbutton"/></button>
                 </form:form>
             </div>

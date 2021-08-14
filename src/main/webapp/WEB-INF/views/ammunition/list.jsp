@@ -1,5 +1,7 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: krzysiekryniu
@@ -17,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lista amunicji</title>
+    <title><spring:message code="ammo.listtitle"/></title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -51,19 +53,19 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Zawartość szafy.</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="weaponlist.header1"/>.</h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2>Lista broni: </h2>
+                    <h2><spring:message code="ammo.ammolist"/>: </h2>
                     <body>
                     <table class="table">
                         <tr>
 <%--                            <th>ID</th>--%>
-                            <th>Kaliber</th>
-                            <th>Pozostało Amunicji</th>
+                            <th><spring:message code="ammo.caliber"/></th>
+                            <th><spring:message code="ammo.ammoleft"/></th>
                             <th></th>
                         </tr>
                         <c:forEach items="${ammos}" var="ammo">
@@ -121,22 +123,7 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+<%@include file="../include/jsscripts.jsp"%>
 
 </body>
 

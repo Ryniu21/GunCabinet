@@ -10,8 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -54,34 +56,20 @@ public class WeaponController {
     }
 
     @PostMapping("/archive/{id}")
-    public String archiveWeapon(Weapon weapon) {
-        weapon.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName())); //Zaciąganie danych dla usera aktualnego ze spring security
-
+    public String archiveWeapon(@Valid Weapon weapon, BindingResult result) {
+        if(result.hasErrors()){
+            return "/weapon/archive";
+        }
+        weapon.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()));//Zaciąganie danych dla usera aktualnego ze spring security
         weaponService.saveWeapon(weapon);
-        System.out.println("POST1A");
 
         return "redirect:/weapon/archive/list";
     }
 
-
-
-//    @PostMapping("/archive/{id}")
-//    @ResponseBody
-//    public String archiveWeapon(@Valid Weapon weapon, BindingResult result,@PathVariable Long id, @PathVariable Date dateSold, Ammo ammo) {
-//        System.out.println("POST1A");
-//        if (weapon.getId() == id) {
-//            if (result.hasErrors()) {
-//                return "/weapon/archive";
-//            }
-//            weapon.setDateSold(dateSold);
-//            weapon.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName())); //Zaciąganie danych dla usera aktualnego ze spring security
-//            ammo.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()));
-//            ammoService.saveNewAmmo(weapon.getUser(), weapon.getCaliber());
-//            weaponService.archive(weapon);
-//        }
-//        return "redirect:/archive/all";
-//    }
-
-
+    @GetMapping("/archive/show/{id}")
+    public String showOneWeaponArchive(@PathVariable Long id, Model model){
+        model.addAttribute(weaponService.findWeaponByWeaponID(id));
+        return "/archive/show";
+    }
 
 }

@@ -65,24 +65,24 @@
                     <form:form method="post" modelAttribute="weapon">
                         <form input path="id" type="hidden" name="id" value="${weapons.id}"/><br>
                         <spring:message code="form.weaponname"/>: <form:input path="name" name="name" value="${weapons.name}"/><br>
-                        <form:errors path="name"/><br>
-                        <spring:message code="form.caliber"/>: <form:select path="caliber"><br>
-                        <form:errors path="caliber"/><br>
+                        <font color="red"> <form:errors path="name">Uzupełnij prawidłowo nazwę broni</form:errors></font>                        <spring:message code="form.caliber"/>: <form:select path="caliber"><br>
                         <form:option value="0"><spring:message code="form.choosecaliber"/></form:option><br>
-                        <form:options items="${calibers}" itemValue="id" itemLabel="name"/><br>
-                    </form:select><br>
-                        <spring:message code="form.permissiontype"/>:<br><form:select path="permission"><br>
+                        <form:options items="${calibers}" itemValue="id" itemLabel="name" path="ammo.caliber"/><br>
+                        </form:select><br>
+                        <font color="red"> <form:errors path="ammo.caliber">Uzupełnij prawidłowo kaliber</form:errors></font>
+                        <spring:message code="form.permissiontype"/>:<form:select path="permission"><br>
                         <form:option value="0"><spring:message code="form.choosepermission"/></form:option><br>
                         <form:options items="${permissions}"/>
-                    </form:select><br>
+                        </form:select><br>
+                        <font color="red"> <form:errors path="permission">Uzupełnij prawidłowo kaliber</form:errors></font>
                         <spring:message code="form.dateBought"/>: <form:input type="date" path="dateBought" name="dateBought"/><br>
-                        <form:errors path="dateBought"/><br>
-                        <form input type="hidden" path="dateSold" name="dateSold"/><br>
+                        <font color="red"> <form:errors path="dateBought">Uzupełnij prawidłowo datę zakupu</form:errors></font>
+                        <form input type="hidden" path="dateSold" name="dateSold"/>
                         <spring:message code="form.ammoshoot"/>: <form:input modelAttribute="weapon" path="ammoShoot" name="ammoShoot"/><br>
-                        <form:errors path="ammoShoot"/><br>
-                        <form input modelAttribute="ammo" path="id" name="id" type="hidden"/><br>
-                        <form input path="weapon.user" name="weapon.user" type="hidden"/><br>
-                        <input type="submit">
+                        <font color="red"><form:errors path="ammoShoot">Uzupełnij prawidłowo wystrzeloną amunicję</form:errors></font><br>
+                        <form input modelAttribute="ammo" path="id" name="id" type="hidden"/>
+                        <form input path="weapon.user" name="weapon.user" type="hidden"/>
+                        <input type="submit" value="Dodaj">
                     </form:form>
 
                     </body>
@@ -127,22 +127,7 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+<%@include file="../include/jsscripts.jsp"%>
 
 </body>
 

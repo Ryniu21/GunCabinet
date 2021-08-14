@@ -2,8 +2,6 @@ package kr.guncabinet.guncabinet.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -17,8 +15,10 @@ public class HomeController {
     public String addingWeapon() { return "/home"; }
 
     @GetMapping("/archive/list")
-
     public String archive() { return "/archive/list"; }
+
+    @GetMapping("/about")
+    public String about() { return "/about"; }
 
 
 }

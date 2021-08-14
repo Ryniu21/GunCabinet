@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -37,6 +38,13 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+    public List<User> finaAllUser() {
+        return userRepository.findAllUser();
+    }
+
+    public List<User> findAllByRoleId(int id) {
+        return userRepository.findAllByRoleId(id);
+    }
 
     public void saveUser(User user, String siteURL) throws UnsupportedEncodingException, MessagingException {
         user.setPassword(passwordEncoder.encode(user.getPassword()));

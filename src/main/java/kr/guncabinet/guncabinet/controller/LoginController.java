@@ -22,6 +22,7 @@ import java.io.UnsupportedEncodingException;
 public class LoginController {
     private final UserService userService;
 
+
     @GetMapping(value = "/login")
     public String loginGet(Model model) {
         model.addAttribute("user", new User());
@@ -31,6 +32,16 @@ public class LoginController {
     @PostMapping("/login")
     public String loginPost(){
         return "weapon/form";
+    }
+
+    @GetMapping(value = "/logout")
+    public String logoutGet() {
+        return "/logout";
+    }
+
+    @PostMapping(value = "/logout")
+    public String logoutPost() {
+        return "/logout";
     }
 
     @GetMapping("/registry")
@@ -53,7 +64,9 @@ public class LoginController {
         //    request.setAttribute("alreadyExist", "Użytkownik o podanym adresie email już istnieje");
         //    return "login/login";
         //}
-
+        if(result.hasErrors()){
+            return "/registry";
+        }
         User validateLogin = userService.findByUserName(user.getUsername());
 
         //String password = request.getParameter("passwordConfirm");

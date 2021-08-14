@@ -5,7 +5,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: krzysiekryniu
-  Date: 13.07.2021
+  Date: 13.08.2021
   Time: 23:08
   To change this template use File | Settings | File Templates.
 --%>
@@ -20,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><spring:message code="training.title"/></title>
+    <title>Lista użytkowników</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -54,41 +54,40 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="training.formh2"/></h1>
+                    <h1 class="h3 mb-0 text-gray-800">Lista użytkowników</h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2><spring:message code="training.formheader"/>: </h2>
+                    <h2></h2>
                     <body>
-                    <form:form method="post" modelAttribute="weapons">
-                    <table>
+                    <table class="table">
                         <tr>
-                            <th><spring:message code="weaponlist.name"/></th>
-                            <th><spring:message code="training.ammoshoot"/></th>
+                            <%--                            <th>ID</th>--%>
+                            <th>Nazwa użytkownika</th>
+                            <th>Uprawnienia</th>
                             <th></th>
                         </tr>
-
-                        <c:forEach items="${weapons}" var="weapon">
+                        <c:forEach items="${users}" var="user">
                             <tr>
-                                <td>${weapon.name}</td>
+                                    <%--                                <td>${weapon.id}</td>--%>
+                                <td>${user.username}</td>
+                                <td>${user.role.name}</td>
                                 <td>
-                                    <input type="number" class="form-control" name="${weapon.id}" min="0" value="0" id="${weapon.id}" width="50"/>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-secondary">+1</button>
-                                    <button type="button" class="btn btn-secondary">+10</button>
-                                    <button type="button" class="btn btn-secondary">+100</button>
-                                    <button type="button" class="btn btn-secondary">+1000</button>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                        <br>
-                        <input type="submit" value="Sprzedaj amunicję">
-                    </form:form>
+                                        <%--                                    <button type="button" class="btn btn-warning" href='<c:url value="/weapon/archive/form/${weapon.id}"/>' onclick="return confirm('Napewno chcesz zarchiwizować jednostkę broni?')">Zarchiwizuj</button>--%>
+<%--                                    <button type="button" class="btn btn-warning" onclick="window.location.href='<c:url value="/admin/adminlist#"/>'">Nadaj uprawnienia admina</button>--%>
+<%--                                    <button type="button" class="btn btn-secondary" onclick="window.location.href='<c:url value="/admin/adminlist"/>'">Usuń</button>--%>
 
+                                </td>
+                                <th></th>
+
+
+                            </tr>
+
+                        </c:forEach>
+
+                    </table>
                     </body>
 
                 </div>

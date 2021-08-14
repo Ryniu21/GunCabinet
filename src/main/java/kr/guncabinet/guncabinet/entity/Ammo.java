@@ -6,6 +6,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.sql.Date;
 
 @Entity
@@ -23,6 +24,7 @@ public class Ammo {
     private Caliber caliber;
 
     @ColumnDefault("0")
+    @Min(0)
     private int ammoCount;
 
     @ManyToOne
@@ -39,12 +41,9 @@ public class Ammo {
     private Integer ammoShootOnTraining;
 
     @Type(type="date")
+    @Transient
     private Date dateOfTransaction;
 
-    //@ManyToOne
-    //@JoinTable(name= "user_ammo", joinColumns = @JoinColumn(name = "user_id"),
-    //        inverseJoinColumns = @JoinColumn(name = "ammo_id"))
-    //private User user;
 
 
 }

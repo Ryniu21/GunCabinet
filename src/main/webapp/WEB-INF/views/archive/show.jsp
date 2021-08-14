@@ -5,8 +5,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: krzysiekryniu
-  Date: 13.07.2021
-  Time: 23:08
+  Date: 12.08.2021
+  Time: 22:28
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -20,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><spring:message code="training.title"/></title>
+    <title><spring:message code="weaponshow.title"/></title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -54,42 +54,50 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="training.formh2"/></h1>
+                    <h1 class="h3 mb-0 text-gray-800"></h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2><spring:message code="training.formheader"/>: </h2>
-                    <body>
-                    <form:form method="post" modelAttribute="weapons">
-                    <table>
+                    <h2><spring:message code="weaponshow.header2"/>: </h2>
+                    <table class="table">
+                        <%--                        <tr>--%>
+                        <%--                            <th>ID</th>--%>
+                        <%--                            <td>${weapon.id}</td>--%>
+                        <%--                            <br>--%>
+                        <%--                        </tr>--%>
                         <tr>
-                            <th><spring:message code="weaponlist.name"/></th>
-                            <th><spring:message code="training.ammoshoot"/></th>
-                            <th></th>
+                            <th><spring:message code="weaponshow.name"/></th>
+                            <td>${weapon.name}</td>
+                            <br>
                         </tr>
-
-                        <c:forEach items="${weapons}" var="weapon">
-                            <tr>
-                                <td>${weapon.name}</td>
-                                <td>
-                                    <input type="number" class="form-control" name="${weapon.id}" min="0" value="0" id="${weapon.id}" width="50"/>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-secondary">+1</button>
-                                    <button type="button" class="btn btn-secondary">+10</button>
-                                    <button type="button" class="btn btn-secondary">+100</button>
-                                    <button type="button" class="btn btn-secondary">+1000</button>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                        <tr>
+                            <th><spring:message code="weaponshow.caliber"/>:</th>
+                            <td>${weapon.caliber.name}</td>
+                            <br>
+                        </tr>
+                        <tr>
+                            <th><spring:message code="weaponshow.permission"/></th>
+                            <td>${weapon.permission}</td>
+                            <br>
+                        </tr>
+                        <tr>
+                            <th><spring:message code="weaponshow.ammoShoot"/></th>
+                            <td>${weapon.ammoShoot}</td>
+                            <br>
+                        </tr>
+                        <tr>
+                            <th><spring:message code="weaponshow.dateBought"/></th>
+                            <td>${weapon.dateBought}</td>
+                            <br>
+                        </tr>
+                        <tr>
+                            <th><spring:message code="weaponshow.dateSold"/></th>
+                            <td>${weapon.dateSold}</td>
+                            <br>
+                        </tr>
                     </table>
-                        <br>
-                        <input type="submit" value="Sprzedaj amunicję">
-                    </form:form>
-
-                    </body>
 
                 </div>
             </div>
