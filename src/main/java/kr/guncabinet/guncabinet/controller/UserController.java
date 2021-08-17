@@ -1,0 +1,27 @@
+package kr.guncabinet.guncabinet.controller;
+
+import kr.guncabinet.guncabinet.entity.CurrentUser;
+import kr.guncabinet.guncabinet.entity.User;
+import kr.guncabinet.guncabinet.service.UserService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class UserController {
+    private final UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+
+    @GetMapping("/admin")
+    @ResponseBody
+    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
+        User entityUser = customUser.getUser();
+        return "Hello " + entityUser.getUsername();
+    }
+
+
+}
