@@ -86,7 +86,7 @@ public class LoginController {
 
         userService.saveUser(user, getSiteURL(request));
         attributes.addFlashAttribute("verify", "Potwierdź swój adres email klikając w link zawarty w wiadomości");
-        return "redirect:/registry";
+        return "redirect:/login";
     }
 
     private String getSiteURL(HttpServletRequest request) {

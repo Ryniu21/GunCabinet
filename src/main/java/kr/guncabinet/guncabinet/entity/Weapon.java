@@ -3,7 +3,6 @@ package kr.guncabinet.guncabinet.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -24,12 +23,12 @@ public class Weapon {
     private Long id;
 
     @Column (nullable = false)
-    @Length(min=4, message="Nazwa powinna mieć pomiędzy 4 a 50 znaków" ,max=50)
-    @Size(min = 5, max = 255, message = "Please enter between {min} and {max} characters.")
+    @Size(min = 2, max = 50, message = "Please enter between {min} and {max} characters.")
     private String name;
 
     @ManyToOne
     @JoinColumn
+    @NotNull
     private Caliber caliber;
 
     @Min(0)

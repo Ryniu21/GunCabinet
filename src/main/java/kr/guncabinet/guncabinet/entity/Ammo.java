@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @Entity
@@ -21,6 +22,7 @@ public class Ammo {
     private Long id;
 
     @ManyToOne
+    @NotNull
     private Caliber caliber;
 
     @ColumnDefault("0")

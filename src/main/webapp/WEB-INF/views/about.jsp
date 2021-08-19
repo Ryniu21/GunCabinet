@@ -65,9 +65,10 @@
                     Ma ona za zadanie wspomagać posiadaczy broni palnej.<br>
                     Możesz w niej znaleźć moduły ewidencji broni i amunicji.<br>
                     Możliwość dodania sztuk broni<br>
-                    Wgląd w sprzedane już sztuki broni.
+                    Wgląd w sprzedane już sztuki broni. <br><br>
 
-<%--                    <input type="submit" value=<spring:message code="login.registryaction"/>><button type="button" onclick="window.location.href='<c:url value="/login"/>'"><spring:message code="registry.backtologinbutton"/></button>--%>
+
+                <%--                    <input type="submit" value=<spring:message code="login.registryaction"/>><button type="button" onclick="window.location.href='<c:url value="/login"/>'"><spring:message code="registry.backtologinbutton"/></button>--%>
 
                 </div>
             </div>
