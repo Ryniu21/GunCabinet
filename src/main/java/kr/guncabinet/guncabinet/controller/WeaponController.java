@@ -25,7 +25,6 @@ public class WeaponController {
     public final UserService userService;
     public final AmmoService ammoService;
 
-
     @ModelAttribute("calibers")
     public List<Caliber> getAllCalibers(){return caliberService.getAllCalibers();}
 
@@ -46,7 +45,6 @@ public class WeaponController {
         model.addAttribute(weaponService.findWeaponByWeaponID(id));
         return "/weapon/show";
     }
-
 
     @GetMapping("/archive/{id}")
     public String archiveWeapon(@PathVariable Long id, Model model){

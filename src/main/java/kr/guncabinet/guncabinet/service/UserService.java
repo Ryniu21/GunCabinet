@@ -24,18 +24,12 @@ public class UserService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
 
-
-    //public UserService(UserRepository userRepository, RoleRepository roleRepository,
-    //                   BCryptPasswordEncoder passwordEncoder) {
-    //    this.passwordEncoder = passwordEncoder;
-    //    this.userRepository = userRepository;
-    //    this.roleRepository = roleRepository;
-    //}
-
-
-
     public User findByUserName(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    public User findUserByMailIgnoreCase(String mail) {
+        return userRepository.findUserByMailIgnoreCase(mail);
     }
 
     public List<User> finaAllUser() {
@@ -55,7 +49,6 @@ public class UserService {
         userRepository.save(user);
         sendVerificationEmail(user, siteURL);
     }
-
 
     private void sendVerificationEmail(User user, String siteURL)
             throws MessagingException, UnsupportedEncodingException {
@@ -85,7 +78,6 @@ public class UserService {
 
         mailSender.send(message);
     }
-
 
     public boolean verify(String verificationCode) {
         User user = userRepository.findByVerificationCode(verificationCode);

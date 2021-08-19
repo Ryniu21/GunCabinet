@@ -27,7 +27,6 @@ public class WeaponFormController {
     public final UserService userService;
     public final AmmoService ammoService;
 
-
     @ModelAttribute("calibers")
     public List<Caliber> getAllCalibers(){return caliberService.getAllCalibers();}
 
@@ -62,7 +61,6 @@ public class WeaponFormController {
 
         return "redirect:/weapon/all";
     }
-
 
     @GetMapping("/edit/{id}")
     public String editWeapon(@PathVariable Long id, Model model){

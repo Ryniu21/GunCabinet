@@ -11,7 +11,8 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
-    User findByMailIgnoreCase(String mail);
+    @Query("SELECT u FROM User u WHERE u.mail = ?1")
+    User findUserByMailIgnoreCase(String mail);
 
     @Query("SELECT u FROM User u WHERE u.verificationCode = ?1")
     public User findByVerificationCode(String code);

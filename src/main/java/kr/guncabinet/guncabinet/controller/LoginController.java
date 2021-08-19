@@ -22,7 +22,6 @@ import java.io.UnsupportedEncodingException;
 public class LoginController {
     private final UserService userService;
 
-
     @GetMapping(value = "/login")
     public String loginGet(Model model) {
         model.addAttribute("user", new User());
@@ -50,40 +49,21 @@ public class LoginController {
         return "/registry";
     }
 
-    //@PostMapping("/registry")
-    //public String add(User user, BindingResult result) throws MessagingException, UnsupportedEncodingException {
-    //    userService.saveUser(user, "url");
-//
-    //    return "redirect:/login";
-    //}
-
     @PostMapping("/registry")
     public String add(@Valid User user, BindingResult result, RedirectAttributes attributes, HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
-        //User validateEmail = userService.findByEmail(user.getEmail());
-        //if (validateEmail != null) {
-        //    request.setAttribute("alreadyExist", "Użytkownik o podanym adresie email już istnieje");
-        //    return "login/login";
-        //}
+        User validateEmail = userService.findUserByMailIgnoreCase(user.getMail());
+        if (validateEmail != null) {
+            request.setAttribute("alreadyExist", "Użytkownik o podanym adresie email już istnieje");
+            return "login/login";
+        }
         if(result.hasErrors()){
             return "/registry";
         }
         User validateLogin = userService.findByUserName(user.getUsername());
-
-        //String password = request.getParameter("passwordConfirm");
         if (validateLogin != null) {
             request.setAttribute("alreadyExist", "Podany login jest już zajęty");
             return "/login";
         }
-        //if (result.hasErrors() && !password.equals(user.getPassword())) {
-        //    request.setAttribute("errorPassword", "Podane hasła nie są identyczne");
-        //    return "/login";
-        //} else if (result.hasErrors()) {
-        //    return "/login";
-        //} else if (!password.equals(user.getPassword())) {
-        //    request.setAttribute("errorPassword", "Podane hasła nie są identyczne");
-        //    return "/login";
-        //}
-
         userService.saveUser(user, getSiteURL(request));
         attributes.addFlashAttribute("verify", "Potwierdź swój adres email klikając w link zawarty w wiadomości");
         return "redirect:/login";

@@ -1,7 +1,5 @@
 package kr.guncabinet.guncabinet.service;
 
-import kr.guncabinet.guncabinet.entity.Ammo;
-import kr.guncabinet.guncabinet.entity.User;
 import kr.guncabinet.guncabinet.entity.Weapon;
 import kr.guncabinet.guncabinet.repository.AmmoRepository;
 import kr.guncabinet.guncabinet.repository.WeaponRepository;
@@ -12,8 +10,6 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.sql.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @Service
@@ -25,7 +21,6 @@ public class WeaponService {
     private final UserService userService;
     @PersistenceContext
     EntityManager entityManager;
-
 
     public void saveWeapon(Weapon weapon){
         weaponRepository.save(weapon);

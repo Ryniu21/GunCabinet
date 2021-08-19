@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/") // akcja testowa dostępna dla wszystkich
-    //@ResponseBody
+    @GetMapping("/")
     public String home() { return "/home"; }
 
-    @GetMapping("/home") // akcja dostępna tylko zalogowanych
+    @GetMapping("/home")
     public String addingWeapon() { return "/home"; }
 
     @GetMapping("/archive/list")

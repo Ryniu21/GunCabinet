@@ -33,7 +33,4 @@ public class Training {
 
     @Min(0)
     private int ammoShootAtTraining;
-
-
-
 }

@@ -18,7 +18,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll() // metoda antMatchers określa adres. potem jest metoda dostępowa
                 .antMatchers("/weapon/**", "/archive/**", "/ammunition/**").hasAnyRole("USER", "ADMIN") // authenticted() określa, że adresy wymagają uwierzytelnienia
                 .antMatchers("/admin/**").hasRole("ADMIN") // określamy role dla której będzie dostepna
-//                .antMatchers("/archive/**").hasRole("ADMIN") // określamy role dla której będzie dostepna
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/weapon/all") // automatycznie przekierowanie do strony logowania, zamiast strony błędu
                 .and().logout().logoutSuccessUrl("/logout") // przekierowanie dla metody logout
                 .permitAll()

@@ -15,22 +15,11 @@ public class UserController {
         this.userService = userService;
     }
 
-
-    //@GetMapping("/admin")
-    //@ResponseBody
-    //public String admin(@AuthenticationPrincipal CurrentUser customUser) {
-    //    User entityUser = customUser.getUser();
-    //    return "Hello " + entityUser.getUsername();
-    //}
-
     @GetMapping("/admin/adminlist")
     public String admin(Model model) {
         model.addAttribute("users", userService.finaAllUser());
-//        List<User> userList = userService.finaAllUser();
         return "/admin/adminlist";
-//        return userList.toString();
     }
-
 
     public boolean ifLastAdmin() {
         List<User> admins = userService.findAllByRoleId(2);

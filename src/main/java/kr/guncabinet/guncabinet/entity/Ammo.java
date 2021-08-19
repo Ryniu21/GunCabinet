@@ -36,6 +36,7 @@ public class Ammo {
         this.caliber = caliber;
         this.user = user;
     }
+
     @Transient
     private Integer ammoBought;
 

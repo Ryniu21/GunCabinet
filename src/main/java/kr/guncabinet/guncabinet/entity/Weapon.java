@@ -50,7 +50,4 @@ public class Weapon {
 
     @Transient
     private Ammo ammo;
-
-
-
 }
