@@ -2,9 +2,10 @@ package kr.guncabinet.guncabinet.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Data
@@ -14,11 +15,4 @@ public class Caliber{
     private Long id;
 
     private String name;
-
-//    @OneToMany(mappedBy = "caliber")
-//    private List<Ammo> ammos = new ArrayList<>();
-//
-//    @OneToMany(mappedBy = "caliber")
-//    private List<Weapon> weapons = new ArrayList<>();
-
 }

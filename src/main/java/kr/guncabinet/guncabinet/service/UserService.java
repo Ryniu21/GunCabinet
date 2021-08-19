@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,20 +24,21 @@ public class UserService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
 
-
-    //public UserService(UserRepository userRepository, RoleRepository roleRepository,
-    //                   BCryptPasswordEncoder passwordEncoder) {
-    //    this.passwordEncoder = passwordEncoder;
-    //    this.userRepository = userRepository;
-    //    this.roleRepository = roleRepository;
-    //}
-
-
-
     public User findByUserName(String username) {
         return userRepository.findByUsername(username);
     }
 
+    public User findUserByMailIgnoreCase(String mail) {
+        return userRepository.findUserByMailIgnoreCase(mail);
+    }
+
+    public List<User> finaAllUser() {
+        return userRepository.findAllUser();
+    }
+
+    public List<User> findAllByRoleId(int id) {
+        return userRepository.findAllByRoleId(id);
+    }
 
     public void saveUser(User user, String siteURL) throws UnsupportedEncodingException, MessagingException {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -47,7 +49,6 @@ public class UserService {
         userRepository.save(user);
         sendVerificationEmail(user, siteURL);
     }
-
 
     private void sendVerificationEmail(User user, String siteURL)
             throws MessagingException, UnsupportedEncodingException {
@@ -77,7 +78,6 @@ public class UserService {
 
         mailSender.send(message);
     }
-
 
     public boolean verify(String verificationCode) {
         User user = userRepository.findByVerificationCode(verificationCode);

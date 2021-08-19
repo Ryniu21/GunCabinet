@@ -20,7 +20,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dodaj amunicje</title>
+    <title><spring:message code="training.title"/></title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -54,13 +54,13 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Formularz dodania amunicji</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="training.formh2"/></h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2>Odejmij amunicję: </h2>
+                    <h2><spring:message code="training.formheader"/>: </h2>
                     <body>
 
                     <form:form method="post" modelAttribute="ammo">
@@ -68,7 +68,7 @@
                         ${ammo.ammoCount}<br>
                         <form:input path="ammoShootOnTraining" type="number" id="ammoShootOnTraining" name="ammoShootOnTraining"
                                     min="0" value="0"/><br>
-                        <input type="submit">
+                        <input type="submit" value="<spring:message code="training.save"/>">
                     </form:form>
 
                     </body>
@@ -110,22 +110,7 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+<%@include file="../include/jsscripts.jsp"%>
 
 </body>
 

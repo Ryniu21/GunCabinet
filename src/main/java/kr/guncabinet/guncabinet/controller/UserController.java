@@ -1,12 +1,12 @@
 package kr.guncabinet.guncabinet.controller;
 
-import kr.guncabinet.guncabinet.entity.CurrentUser;
 import kr.guncabinet.guncabinet.entity.User;
 import kr.guncabinet.guncabinet.service.UserService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -15,13 +15,18 @@ public class UserController {
         this.userService = userService;
     }
 
-
-    @GetMapping("/admin")
-    @ResponseBody
-    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
-        User entityUser = customUser.getUser();
-        return "Hello " + entityUser.getUsername();
+    @GetMapping("/admin/adminlist")
+    public String admin(Model model) {
+        model.addAttribute("users", userService.finaAllUser());
+        return "/admin/adminlist";
     }
 
+    public boolean ifLastAdmin() {
+        List<User> admins = userService.findAllByRoleId(2);
+        if (admins.size() > 1) {
+            return false;
+        }
+        return true;
+    }
 
 }

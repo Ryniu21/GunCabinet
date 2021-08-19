@@ -2,8 +2,11 @@ package kr.guncabinet.guncabinet.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.sql.Date;
 
 @Entity
@@ -17,6 +20,9 @@ public class Training {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Type(type="date")
+    @DateTimeFormat(pattern = "dd.mm.yyyy")
+    @Temporal(TemporalType.DATE)
     private Date trainingDate;
 
     @ManyToOne
@@ -25,8 +31,6 @@ public class Training {
     @ManyToOne
     private User user;
 
+    @Min(0)
     private int ammoShootAtTraining;
-
-
-
 }

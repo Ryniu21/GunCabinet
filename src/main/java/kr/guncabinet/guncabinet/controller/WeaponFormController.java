@@ -2,7 +2,6 @@ package kr.guncabinet.guncabinet.controller;
 
 import kr.guncabinet.guncabinet.entity.Ammo;
 import kr.guncabinet.guncabinet.entity.Caliber;
-import kr.guncabinet.guncabinet.entity.User;
 import kr.guncabinet.guncabinet.entity.Weapon;
 import kr.guncabinet.guncabinet.service.AmmoService;
 import kr.guncabinet.guncabinet.service.CaliberService;
@@ -28,7 +27,6 @@ public class WeaponFormController {
     public final UserService userService;
     public final AmmoService ammoService;
 
-
     @ModelAttribute("calibers")
     public List<Caliber> getAllCalibers(){return caliberService.getAllCalibers();}
 
@@ -50,7 +48,12 @@ public class WeaponFormController {
     }
 
     @PostMapping("/form")
-    public String weaponForm (Weapon weapon, Ammo ammo, BindingResult result) {
+    public String weaponForm (@Valid Weapon weapon, Ammo ammo, BindingResult result) {
+        if(result.hasErrors()){
+            System.out.println("error");
+            return "/weapon/form";
+        }
+        System.out.println("postA");
         weapon.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName())); //Zaciąganie danych dla usera aktualnego ze spring security
         ammo.setUser(userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()));
         ammoService.saveNewAmmo(weapon.getUser(), weapon.getCaliber());
@@ -58,7 +61,6 @@ public class WeaponFormController {
 
         return "redirect:/weapon/all";
     }
-
 
     @GetMapping("/edit/{id}")
     public String editWeapon(@PathVariable Long id, Model model){

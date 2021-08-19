@@ -2,15 +2,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: krzysiekryniu
-  Date: 13.07.2021
-  Time: 23:08
+  Date: 12.08.2021
+  Time: 01:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
 
@@ -20,16 +20,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><spring:message code="training.title"/></title>
+    <title><spring:message code="home.startpagetitle"/></title>
 
     <!-- Custom fonts for this template-->
-    <link href="<c:url value="/theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="../theme/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<c:url value="/theme/css/sb-admin-2.css"/>" rel="stylesheet">
+    <link href="<c:url value="../theme/css/sb-admin-2.css"/>" rel="stylesheet">
 
 </head>
 
@@ -38,58 +38,37 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-
-    <%@ include file="../include/sidebar.jsp" %>
-
+    <sec:authorize access="isAuthenticated()">
+        <%@ include file="include/sidebar.jsp" %>
+    </sec:authorize>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
         <div id="content">
 
-            <%@ include file="../include/header.jsp" %>
+            <%@ include file="include/header.jsp" %>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="training.formh2"/></h1>
+                    <h1 class="h3 mb-0 text-gray-800"><spring:message code="home.welcometoapp"/>.</h1>
                     <%--                    <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--%>
                     <%--                            class="fas fa-download fa-sm text-white-50"></i> Lista użytkowników</a>--%>
                 </div>
                 <%--                HERE INCLUDE CONTENT--%>
                 <div>
-                    <h2><spring:message code="training.formheader"/>: </h2>
-                    <body>
-                    <form:form method="post" modelAttribute="weapons">
-                    <table>
-                        <tr>
-                            <th><spring:message code="weaponlist.name"/></th>
-                            <th><spring:message code="training.ammoshoot"/></th>
-                            <th></th>
-                        </tr>
+                    <h1>Witam</h1>
+                    Zapraszam do używania mojej pierwszej aplikacji.<br>
+                    Ma ona za zadanie wspomagać posiadaczy broni palnej.<br>
+                    Możesz w niej znaleźć moduły ewidencji broni i amunicji.<br>
+                    Możliwość dodania sztuk broni<br>
+                    Wgląd w sprzedane już sztuki broni. <br><br>
 
-                        <c:forEach items="${weapons}" var="weapon">
-                            <tr>
-                                <td>${weapon.name}</td>
-                                <td>
-                                    <input type="number" class="form-control" name="${weapon.id}" min="0" value="0" id="${weapon.id}" width="50"/>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-secondary">+1</button>
-                                    <button type="button" class="btn btn-secondary">+10</button>
-                                    <button type="button" class="btn btn-secondary">+100</button>
-                                    <button type="button" class="btn btn-secondary">+1000</button>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                        <br>
-                        <input type="submit" value="Sprzedaj amunicję">
-                    </form:form>
 
-                    </body>
+                <%--                    <input type="submit" value=<spring:message code="login.registryaction"/>><button type="button" onclick="window.location.href='<c:url value="/login"/>'"><spring:message code="registry.backtologinbutton"/></button>--%>
 
                 </div>
             </div>
@@ -97,7 +76,7 @@
         </div>
         <!-- End of Main Content -->
 
-        <%@include file="../include/footer.jsp"%>
+        <%@include file="include/footer.jsp"%>
 
 
     </div>
@@ -131,7 +110,22 @@
     </div>
 </div>
 
-<%@include file="../include/jsscripts.jsp"%>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/chart-area-demo.js"></script>
+<script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

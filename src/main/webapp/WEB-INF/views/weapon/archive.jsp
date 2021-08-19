@@ -63,6 +63,7 @@
                     <h2><spring:message code="archive.header2"/>: </h2>
                     <body>
                         <form:form method="post" modelAttribute="weapon">
+
                             <form:hidden path="id" value="${weapon.id}"/>
                             <spring:message code="form.weaponname"/>:${weapon.name}<br><form:hidden path="name" value="${weapon.name}"/>
                             <spring:message code="form.caliber"/>: ${weapon.caliber.name}<div class="d-none"><form:select path="caliber"><br>
@@ -72,7 +73,8 @@
                             <spring:message code="form.permissiontype"/>:${weapon.permission}<br><form:hidden path="permission" value="${weapon.permission}"/>
                             <spring:message code="form.ammoshoot"/>: ${weapon.ammoShoot}<br><form:hidden path="ammoShoot" value="${weapon.ammoShoot}"/>
                             <spring:message code="form.dateBought"/>: ${weapon.dateBought}<br><form:hidden path="dateBought" value="${weapon.dateBought}"/>
-                            <spring:message code="form.dateSold"/>: <form:input type="date" path="dateSold"/><br>
+                            <spring:message code="form.dateSold"/>: <form:input type="date" path="dateSold"/><font color="red"> <form:errors path="dateSold">Uzupełnij prawidłowo datę sprzedaży</form:errors></font><br>
+
                             <input type="submit" value="<spring:message code="archive.submit"/>">
                         </form:form>
 
@@ -118,22 +120,7 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+<%@include file="../include/jsscripts.jsp"%>
 
 </body>
 

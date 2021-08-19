@@ -49,6 +49,4 @@ public class AmmoService {
         ammoRepository.save(ammo);
     }
 
-
-
 }
