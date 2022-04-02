@@ -1,12 +1,12 @@
-package kr.guncabinet.guncabinet.controller;
+package kr.guncabinet.guncabinet.weapon;
 
-import kr.guncabinet.guncabinet.entity.Ammo;
+import kr.guncabinet.guncabinet.ammo.Ammo;
 import kr.guncabinet.guncabinet.entity.Caliber;
-import kr.guncabinet.guncabinet.entity.Weapon;
-import kr.guncabinet.guncabinet.service.AmmoService;
+import kr.guncabinet.guncabinet.weapon.Weapon;
+import kr.guncabinet.guncabinet.ammo.AmmoService;
 import kr.guncabinet.guncabinet.service.CaliberService;
 import kr.guncabinet.guncabinet.service.UserService;
-import kr.guncabinet.guncabinet.service.WeaponService;
+import kr.guncabinet.guncabinet.weapon.WeaponService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;

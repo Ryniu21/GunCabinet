@@ -1,5 +1,6 @@
 package kr.guncabinet.guncabinet.entity;
 
+import kr.guncabinet.guncabinet.weapon.Weapon;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;

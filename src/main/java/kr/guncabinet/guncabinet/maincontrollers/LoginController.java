@@ -1,8 +1,8 @@
 package kr.guncabinet.guncabinet.controller;
 
 
-import kr.guncabinet.guncabinet.entity.User;
-import kr.guncabinet.guncabinet.service.UserService;
+import kr.guncabinet.guncabinet.user.User;
+import kr.guncabinet.guncabinet.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

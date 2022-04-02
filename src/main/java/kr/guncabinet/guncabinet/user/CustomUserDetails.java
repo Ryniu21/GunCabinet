@@ -1,5 +1,6 @@
-package kr.guncabinet.guncabinet.entity;
+package kr.guncabinet.guncabinet.user;
 
+import kr.guncabinet.guncabinet.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
